@@ -44,7 +44,7 @@ assert 2 + 2 == 4, "2+2 not equal 4"
 assert phone_count >= 50, "Phone number is less then 50"
 
 #  sleep and take screenshot
-browser.save_screenshot("screen1.png")
+browser.save_screenshot("screeenshots/screen1.png")
 
 # quit
 # print("THE END!")
