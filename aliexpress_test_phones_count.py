@@ -15,10 +15,24 @@ ok_xpath = "//a[@class='ui-button narrow-go']"
 phones_list_xpath = "//div[@class='list-wrap product-list']//li"
 free_xpath = '//*[@id="root"]/div/div/div[2]/div[2]/div/div[1]/div[2]/div[1]/span[3]/span[2]/label/span[1]/input'
 
+
 options = webdriver.ChromeOptions()
 options.add_argument("--start-maximized")
 
-browser = webdriver.Chrome(chrome_options=options)   # launch browser
+capabilities = {
+    "browserName": "chrome",
+    "browserVersion": "91.0",
+    "selenoid:options": {
+        "enableVNC": True,
+        "enableVideo": False
+    }
+}
+
+# init browser
+browser = webdriver.Remote(
+    command_executor="http://localhost:4444/wd/hub",
+    desired_capabilities=capabilities,
+    options=options)
 browser.get(url)    # visit site
 
 WebDriverWait(browser, 180).until(EC.presence_of_element_located((By.XPATH, advertisment_xpath))).click()    # wait and click advertisment
