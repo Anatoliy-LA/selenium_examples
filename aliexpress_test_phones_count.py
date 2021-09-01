@@ -54,7 +54,10 @@ WebDriverWait(browser, 180).until(EC.presence_of_element_located((By.XPATH, free
 phone_count = len(browser.find_elements_by_xpath(phones_list_xpath))
 print(phone_count)
 
+# for example
 assert 2 + 2 == 4, "2+2 not equal 4"
+
+# test
 assert phone_count >= 50, "Phone number is less then 50"
 
 #  sleep and take screenshot
