@@ -40,7 +40,8 @@ class GithubMain(BasePage):
         WebDriverWait(self.browser, 180).until(EC.presence_of_element_located((By.XPATH, self.xpath_201_plus))).click()    # wait and click advertisment
 
         # # test
-        # assert phone_count >= 50, "Phone number is less then 50"
+        value = self.browser.find_element_by_xpath(self.xpath_201_plus)
+        assert value.text == "200+ million"
 
         #  sleep and take screenshot
         print("===3===")
