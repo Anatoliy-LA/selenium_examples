@@ -1,5 +1,6 @@
 from pages.github import GithubMain
 
 
-phones_page = GithubMain()
-phones_page.test_page()
+def test_github_main(browser):
+    phones_page = GithubMain()
+    phones_page.test_main_page(browser)
