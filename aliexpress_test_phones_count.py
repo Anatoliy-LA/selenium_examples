@@ -1,5 +1,5 @@
-from pages.phones import PhonesPage
+from pages.ali_phones import AliPhonesPage
 
 
-phones_page = PhonesPage()
+phones_page = AliPhonesPage()
 phones_page.test_page()
