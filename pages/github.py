@@ -9,25 +9,20 @@ class GithubMain(BasePage):
 
     def __init__(self):
         BasePage.__init__(self)
-        print("===GithubMain===")
 
     def test_main_page(self, browser):
-        url = "https://github.com/"
-        print("===1===")
-        browser.get(url)    # visit site
-        print("===2===")
+        # visit site
+        browser.get("https://github.com/")
 
+        # wait for element we test
         WebDriverWait(browser, 180).until(EC.presence_of_element_located((By.XPATH, self.xpath_201_plus))).click()    # wait and click advertisment
 
-        # # test
+        # test
         value = browser.find_element_by_xpath(self.xpath_201_plus)
         assert value.text == "200+ million"
 
-        #  sleep and take screenshot
-        print("===3===")
+        # take screenshot
         browser.save_screenshot("screenshots/screen_github.png")
-        print("===4===")
 
         # quit
-        print("THE END!")
         browser.quit()
