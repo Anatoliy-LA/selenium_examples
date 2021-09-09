@@ -1,8 +1,8 @@
 from pages.base import BasePage
 from selenium import webdriver
-# from selenium.webdriver.support.wait import WebDriverWait
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class AliPhonesPage(BasePage):
@@ -39,37 +39,34 @@ class AliPhonesPage(BasePage):
             options=options)
 
     def test_page(self):
-        url = "https://habr.com"
+        url = "http://aliexpress.ru/"
         print("===1===")
         self.browser.get(url)    # visit site
         print("===2===")
 
-        # WebDriverWait(self.browser, 180).until(EC.presence_of_element_located((By.XPATH, self.advertisment_xpath))).click()    # wait and click advertisment
-        # WebDriverWait(self.browser, 180).until(EC.presence_of_element_located((By.XPATH, self.phones_xpath))).click()
-        # WebDriverWait(self.browser, 180).until(EC.presence_of_element_located((By.XPATH, self.advertisment_2_xpath))).click()    # wait and click advertisment page 2
+        WebDriverWait(self.browser, 180).until(EC.presence_of_element_located((By.XPATH, self.advertisment_xpath))).click()    # wait and click advertisment
+        WebDriverWait(self.browser, 180).until(EC.presence_of_element_located((By.XPATH, self.phones_xpath))).click()
+        WebDriverWait(self.browser, 180).until(EC.presence_of_element_located((By.XPATH, self.advertisment_2_xpath))).click()    # wait and click advertisment page 2
 
-        # # free = browser.find_element_by_xpath(free_xpath)
-        # # free.click()
-        # value = self.browser.find_element_by_xpath(self.min_value_xpath)  # input min value
-        # value.send_keys("5000")
-        # value2 = self.browser.find_element_by_xpath(self.max_value_xpath)  # input max value
-        # value2.send_keys("15000")
-        # ok = self.browser.find_element_by_xpath(self.ok_xpath)  # input ok
-        # ok.click()
+        free = self.browser.find_element_by_xpath(self.free_xpath)
+        free.click()
+        value = self.browser.find_element_by_xpath(self.min_value_xpath)  # input min value
+        value.send_keys("5000")
+        value2 = self.browser.find_element_by_xpath(self.max_value_xpath)  # input max value
+        value2.send_keys("15000")
+        ok = self.browser.find_element_by_xpath(self.ok_xpath)  # input ok
+        ok.click()
 
-        # WebDriverWait(self.browser, 180).until(EC.presence_of_element_located((By.XPATH, self.free_xpath))).click()
+        WebDriverWait(self.browser, 180).until(EC.presence_of_element_located((By.XPATH, self.free_xpath))).click()
 
-        # # count of number phones
-        # phone_count = len(self.browser.find_elements_by_xpath(self.phones_list_xpath))
-        # print(phone_count)
+        # count of number phones
+        phone_count = len(self.browser.find_elements_by_xpath(self.phones_list_xpath))
+        print(phone_count)
 
-        # # for example
-        # assert 2 + 2 == 4, "2+2 not equal 4"
+        # test
+        assert phone_count >= 50, "Phone number is less then 50"
 
-        # # test
-        # assert phone_count >= 50, "Phone number is less then 50"
-
-        #  sleep and take screenshot
+        # sleep and take screenshot
         print("===3===")
         self.browser.save_screenshot("screenshots/screen_ali.png")
         print("===4===")
