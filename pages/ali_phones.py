@@ -33,10 +33,11 @@ class AliPhonesPage(BasePage):
         }
 
         # init browser
-        self.browser = webdriver.Remote(
-            command_executor="http://localhost:4444/wd/hub",
-            desired_capabilities=capabilities,
-            options=options)
+        # self.browser = webdriver.Remote(
+        #     command_executor="http://localhost:4444/wd/hub",
+        #     desired_capabilities=capabilities,
+        #     options=options)
+        self.browser = webdriver.Firefox()
 
     def test_page(self):
         url = "http://aliexpress.ru/"
